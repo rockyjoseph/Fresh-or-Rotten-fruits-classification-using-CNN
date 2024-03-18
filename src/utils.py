@@ -13,7 +13,7 @@ def save_object(file_path, obj):
 
         os.makedirs(dir_path, exist_ok=True)
 
-        model = obj.save(file_path)
+        obj.save(file_path)
     
     except Exception as e:
         raise CustomException(e, sys)
@@ -22,6 +22,6 @@ def load_object(file_path):
     try:
         model = tf.keras.models.load_model(file_path)
         return model
-        
+
     except Exception as e:
         raise CustomException(e, sys)
