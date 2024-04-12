@@ -1,6 +1,7 @@
 import sys
 import datetime
 import pandas as pd
+import numpy as np
 
 import cv2
 from PIL import Image, ImageOps
@@ -15,7 +16,7 @@ class PredictPipeline:
     def predict(self, image_data):
         try:
             size = (256,256)
-            model_path = 'artifacts/models/fruits/'
+            model_path = 'artifacts/models/fruits'
             model = load_object(file_path = model_path)
             
             image = ImageOps.fit(image_data, size, Image.ANTIALIAS)
