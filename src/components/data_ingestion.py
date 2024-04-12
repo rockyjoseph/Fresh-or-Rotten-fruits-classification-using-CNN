@@ -56,17 +56,17 @@ if __name__ == '__main__':
 
     split_size = 0.1
     root_dir = 'artifacts'
-    dataset_folder = 'notebook\Fruits dataset'
+    dataset_folder = 'notebook\data\Fruits dataset'
     # initiate_data_ingestion(root_dir, dataset_folder, split_size)
     
     module = DataIngestion()
     module.initiate_data_ingestion(root_dir, dataset_folder, split_size)
 
-    train_data = 'artifacts/test/'
-    test_data = 'artifacts/train/'
+    test_data = 'artifacts/test/'
+    train_data = 'artifacts/train/'
     
     data_validation = DataValidation()
     train_dataset, valid_dataset = data_validation.initiate_data_validation(train_data, test_data)
 
     model = ModelTrainer()
-    print(model.evalute_model(train_dataset, valid_dataset))
+    print(model.evaluate_model(train_dataset, valid_dataset))
