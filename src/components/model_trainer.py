@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from src.logger import logging
 from src.exception import CustomException
 
-from src.utils import load_object
+from src.utils import save_object
 
 import tensorflow as tf
 from tensorflow.keras.regularizers import l2
@@ -55,7 +55,7 @@ class ModelTrainer:
                 layers.Dense(n_classes, activation='softmax')
             ])
 
-            model.build(input_shape=input_shape)
+            model.build(input_shape=(None, 256, 256, 3))
             
             model.summary()
 
@@ -77,7 +77,7 @@ class ModelTrainer:
 
             score = model.evaluate(val_data)
 
-            load_object(
+            save_object(
                 file_path= self.model_trainer_config.trained_model_path,
                 obj = model
             )
